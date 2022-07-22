@@ -18,8 +18,8 @@ jobs:
     - run: npm install
     - run: npm test
     - uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{secrets.DIGITAL_OCEAN_SECRET}}
+      with:
+        token: ${{secrets.DIGITAL_OCEAN_SECRET}}
 
 
 
