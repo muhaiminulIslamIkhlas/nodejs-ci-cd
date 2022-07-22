@@ -15,5 +15,36 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '16.x'
-    - run: npm injgh
+    - run: npm install
     - run: npm test
+    - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITAL_OCEAN_SECRET}}
+
+
+
+# name: deploy-attendance
+
+# on:
+#     push:
+#         branches:
+#             - master
+#         paths:
+#             - "attendance/**"
+
+# jobs:
+#     build:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - uses: actions/checkout@v2
+#             - run: cd attendance && docker build -t rajucloud/attendance .
+#             - run: docker login -u $DOCKER_USERNAME -p $DOCKER_ACCESS_TOCKEN
+#               env:
+#                   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+#                   DOCKER_ACCESS_TOCKEN: ${{ secrets.DOCKER_ACCESS_TOCKEN }}
+#             - run: docker push rajucloud/attendance
+#             - uses: digitalocean/action-doctl@v2
+#               with:
+#                   token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+#             - run: doctl kubernetes cluster kubeconfig save shurjoerp
+#             - run: kubectl rollout restart deployment attendance-depl
