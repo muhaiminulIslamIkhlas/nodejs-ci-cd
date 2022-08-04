@@ -24,7 +24,7 @@ jobs:
     - uses: digitalocean/action-doctl@v2
       with:
         token: ${{secrets.DIGITAL_OCEAN_SECRET}}
-    - run: cd /root/nodejs
+    - run: cd /var/www/html/
     - run: git pull 
     - run: npm install
     - run: pm2 start app.js
