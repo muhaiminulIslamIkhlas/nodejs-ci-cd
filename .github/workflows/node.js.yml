@@ -20,13 +20,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - uses: digitalocean/action-doctl@v2
       with:
         token: ${{secrets.DIGITAL_OCEAN_SECRET}}
-    - run: sudo cd /root/nodejs
-    - run: sudo git pull 
-    - run: sudo npm install
-    - run: sudo pm2 start app.js
+    - run: cd /root/nodejs
+    - run: git pull 
+    - run: npm install
+    - run: pm2 start app.js
 
 
 
