@@ -17,6 +17,9 @@ jobs:
         node-version: '16.x'
     - run: npm install
     - run: npm test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
     - uses: digitalocean/action-doctl@v2
       with:
         token: ${{secrets.DIGITAL_OCEAN_SECRET}}
